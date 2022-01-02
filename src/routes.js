@@ -1,9 +1,7 @@
 const express = require("express");
 const routers = express.Router();
+const clientController = require("./controllers/clientController");
 
-routers.get("/", (req, res) => {
-  return res.json({ ok: true });
-  // res.send("Hello World");
-});
+routers.post("/insert", clientController.store);
 
 module.exports = routers;
