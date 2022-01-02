@@ -1,7 +1,8 @@
 const express = require("express");
-const nodemon = require("nodemon");
+const routes = require("./routes");
 
 const App = express();
-App.use(express.json);
+App.use(express.json());
+App.use(routes);
 
 App.listen(3333, () => console.log("Servidor rodando"));
