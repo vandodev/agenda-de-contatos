@@ -19,10 +19,28 @@ module.exports = {
     });
     return res.json(client);
   },
-  async index(rec, res) {
+  async index(req, res) {
     const clients = await Client.find();
     return res.json(clients);
   },
-  async update(rec, res) {},
+  async update(req, res) {
+    const { id } = req.params;
+    const { email, nome, rua, numero, bairro, cep, cidade, uf } = req.body;
+    const client = await Client.findByIdAndUpdate(
+      id,
+      {
+        email,
+        nome,
+        rua,
+        numero,
+        bairro,
+        cep,
+        cidade,
+        uf,
+      },
+      { new: true } //new true serve para retornar atualizado, se não colocar retorna o antigo
+    );
+    return res.json(client);
+  },
   async delete(rec, res) {},
 };
