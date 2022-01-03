@@ -42,5 +42,9 @@ module.exports = {
     );
     return res.json(client);
   },
-  async delete(rec, res) {},
+  async delete(req, res) {
+    const { id } = req.params;
+    await Client.findOneAndDelete(id);
+    return res.json({ sucesso: "Contato removido com sucesso" });
+  },
 };
