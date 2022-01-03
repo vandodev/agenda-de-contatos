@@ -19,7 +19,10 @@ module.exports = {
     });
     return res.json(client);
   },
-  async index(rec, res) {},
+  async index(rec, res) {
+    const clients = await Client.find();
+    return res.json(clients);
+  },
   async update(rec, res) {},
   async delete(rec, res) {},
 };
